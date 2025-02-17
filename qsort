@@ -1,0 +1,34 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <string.h>
+#include <stdio.h>
+struct stu
+{
+	char name[20];
+	int age;
+};
+int cm_name(const* p1, const* p2)
+{
+	return strcmp(((struct stu*)p1)->name, ((struct stu*)p2)->name);
+}
+void test1()
+{
+	struct stu arr[] = {{"qintao",20},{"caonima",18},{ "pekemen",33 }};
+	int sz = sizeof(arr) / sizeof(arr[0]);
+	qsort(arr, sz, sizeof(arr[0]), cm_name);
+}
+int cm_age(const* p1, const* p2)
+{
+	return ((struct stu*)p1)->age-((struct stu *)p2)->age;
+}
+void test2()
+{
+	struct stu arr[] = { {"qintao",20},{"caonima",18},{ "pekemen",33 } };
+	int sz = sizeof(arr) / sizeof(arr[0]);
+	qsort(arr, sz, sizeof(arr[0]), cm_age);
+}
+int main() 
+{
+	test2();
+	//test1();
+	return 0;
+}
